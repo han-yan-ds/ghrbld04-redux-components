@@ -11,22 +11,26 @@
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {isBold: false};
   }
 
   render() {
-    return <li onMouseOver={this.makeBold}>{this.props.item}</li>;
+    if (this.state.isBold) {
+      return <li onMouseLeave={this.makeBold.bind(this, false)}><strong>{this.props.item}</strong></li>;
+    }
+    return <li onMouseEnter={this.makeBold.bind(this, true)}>{this.props.item}</li>;
   }
 
-  makeBold() {
-    // $(".groceryItem").css('font-weight', 'bold');
+  makeBold(yesOrNo) { // make the font weight bold if isBold state is true
+    this.setState({isBold: yesOrNo});
   }
 };
 
 var GroceryList = function(props) {
   return (
     <ul>
-      {props.groceryItems.map( function(item){
-        return <GroceryListItem key={i} item={item} />;
+      {props.groceryItems.map( function(item, index){
+        return <GroceryListItem key={index} item={item} />;
       })}
     </ul>
   );
