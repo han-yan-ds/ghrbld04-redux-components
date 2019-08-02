@@ -1,13 +1,3 @@
-// var GroceryList = function(props) {
-//   return (
-//     <ul>
-//       {props.groceryItems.map( function(item) {
-//         return <li>{item}</li>;
-//       } )}
-//     </ul>
-//   );
-// };
-
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
